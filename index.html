@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayuri Ghagada - International Real Estate Professional</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #94d2bd;
+            --dark-bg: #001219;
+            --light-bg: #e9d8a6;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --highlight: #ee9b00;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.15;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        /* Glass morphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glass:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(0, 31, 41, 0.95) !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(10, 147, 150, 0.3);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--accent-color) !important;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-title span {
+            color: var(--accent-color);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        
+        .profile-image-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-image-container:hover .profile-img {
+            transform: scale(1.05);
+        }
+        
+        /* Buttons */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(10, 147, 150, 0.3);
+            color: white;
+        }
+        
+        .btn-outline-custom {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-custom:hover {
+            background: var(--accent-color);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(148, 210, 189, 0.3);
+        }
+        
+        /* Section styling */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--highlight);
+        }
+        
+        /* Stats Section */
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .stats-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+        
+        /* About Section */
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .expertise-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .expertise-item {
+            background: rgba(10, 147, 150, 0.1);
+            border-left: 3px solid var(--accent-color);
+            border-radius: 5px;
+            padding: 15px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .expertise-item:hover {
+            transform: translateX(10px);
+            background: rgba(10, 147, 150, 0.2);
+        }
+        
+        .expertise-icon {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 50px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 45%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+        
+        .timeline-content {
+            background: rgba(0, 95, 115, 0.1);
+            border-left: 3px solid var(--accent-color);
+            padding: 30px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px rgba(148, 210, 189, 0.3);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -60px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -60px;
+        }
+        
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        /* Skills Section */
+        .skill-card {
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            padding: 30px;
+            border-radius: 10px;
+            background: rgba(0, 95, 115, 0.1);
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        .testimonial-position {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-color);
+            box-shadow: none;
+            color: white;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 31, 41, 0.95);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(10, 147, 150, 0.3);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .footer-link {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(148, 210, 189, 0.1);
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--accent-color);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 30px;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .profile-image-container {
+                width: 300px;
+                height: 300px;
+                margin: 0 auto 50px;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 70px 0;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 70px);
+                left: 70px !important;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-dot,
+            .timeline-item:nth-child(odd) .timeline-dot {
+                left: -50px;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .profile-image-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg" id="animatedBg"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Mayuri Ghagada</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Mayuri <span>Ghagada</span></h1>
+                        <h2 class="hero-subtitle">International Real Estate Professional</h2>
+                        <p class="hero-description">
+                            With over 20 years of excellence in international real estate sales, marketing, and business development across Dubai, Middle East, and Africa. Proven track record in luxury property sales, team leadership, and business growth strategies.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#contact" class="btn btn-primary-custom">
+                                <i class="fas fa-paper-plane me-2"></i>Contact Me
+                            </a>
+                            <a href="#experience" class="btn btn-outline-custom">
+                                <i class="fas fa-briefcase me-2"></i>My Experience
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="profile-image-container">
+                        <img src="Pic 2222.jpeg" alt="Mayuri Ghagada" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-counter">20+</div>
+                    <p class="stats-label">Years Experience</p>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-counter">27Cr+</div>
+                    <p class="stats-label">Revenue Generated</p>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-counter">9</div>
+                    <p class="stats-label">Countries Served</p>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-counter">500+</div>
+                    <p class="stats-label">Clients Served</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">About Me</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <p>
+                            A highly motivated professional with a strong desire to excel and eagerness to learn. I leverage my extensive experience and abilities for organizational growth while continuously developing my expertise in international real estate and business development.
+                        </p>
+                        <p>
+                            With a proven track record across multiple countries and markets, I bring a unique perspective to property sales and business development. My approach combines strategic thinking with hands-on execution to deliver exceptional results.
+                        </p>
+                        <p>
+                            I thrive in challenging environments and am known for my resilience, adaptability, and ability to build lasting relationships with high-net-worth clients across diverse cultures.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass p-4">
+                        <h4 class="mb-4">Core Expertise</h4>
+                        <div class="expertise-list">
+                            <div class="expertise-item">
+                                <i class="fas fa-globe expertise-icon"></i>
+                                <span>International Real Estate Sales (Dubai, Middle East, Africa)</span>
+                            </div>
+                            <div class="expertise-item">
+                                <i class="fas fa-chart-line expertise-icon"></i>
+                                <span>Business Development & Market Expansion</span>
+                            </div>
+                            <div class="expertise-item">
+                                <i class="fas fa-users expertise-icon"></i>
+                                <span>Team Leadership & Sales Management</span>
+                            </div>
+                            <div class="expertise-item">
+                                <i class="fas fa-handshake expertise-icon"></i>
+                                <span>High Net Worth Client Relationship Management</span>
+                            </div>
+                            <div class="expertise-item">
+                                <i class="fas fa-bullseye expertise-icon"></i>
+                                <span>Sales Strategy & Target Achievement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center">Professional Experience</h2>
+            <div class="timeline">
+                <!-- Current Role -->
+                <div class="timeline-item">
+                    <div class="timeline-content glass">
+                        <div class="timeline-dot"></div>
+                        <h3>Senior Sales Executive / Special Account Executive</h3>
+                        <h5>ASSA ABLOY Global Solutions Norway AS</h5>
+                        <p class="timeline-date">June 2014 - Present | Dubai, UAE</p>
+                        <ul>
+                            <li>Marketing and selling high-security technology products including safe boxes</li>
+                            <li>Coordinating with ELV/ID consultants to specify product specifications in upcoming projects</li>
+                            <li>Communicating with all stakeholders at project sites including contractors and engineers</li>
+                            <li>Conducting training seminars for consultants and contractors</li>
+                            <li>Successfully achieving annual sales targets through strategic negotiations</li>
+                            <li>Managing the entire sales cycle from enquiry to order execution</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Previous Roles -->
+                <div class="timeline-item">
+                    <div class="timeline-content glass">
+                        <div class="timeline-dot"></div>
+                        <h3>Director & Freelance Real Estate Broker</h3>
+                        <h5>Self Employed</h5>
+                        <p class="timeline-date">June 2013 - Present | Kampala, Uganda</p>
+                        <ul>
+                            <li>Marketing and selling properties in Uganda and Kenya markets</li>
+                            <li>Specializing in high-net-worth individuals interested in Dubai and Mumbai properties</li>
+                            <li>Building and maintaining strong client relationships through consistent follow-ups</li>
+                            <li>Successfully selling and leasing commercial properties in East Africa</li>
+                            <li>Developing extensive professional network in the region</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content glass">
+                        <div class="timeline-dot"></div>
+                        <h3>Sales Manager</h3>
+                        <h5>Sternon Real Estate</h5>
+                        <p class="timeline-date">October 2007 - December 2012 | Dubai, UAE</p>
+                        <ul>
+                            <li>Generated 4 million AED revenue individually for Sternon Tower project in 2011</li>
+                            <li>Consistently delivered annual revenue turnover of 27+ crores</li>
+                            <li>Developed business across Africa (Kenya, Uganda, Tanzania, Rwanda, Nigeria, Ghana, Botswana, Congo, South Africa), UK, USA</li>
+                            <li>Assisted in establishing branch offices in Nairobi and South Africa</li>
+                            <li>Supervised teams of 5-6 staff in each office location</li>
+                            <li>Managed media campaigns including TV, radio shows, roadshows, and international exhibitions</li>
+                            <li>Handled all aspects of property transactions from initial contact to closing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content glass">
+                        <div class="timeline-dot"></div>
+                        <h3>Business Development Manager (Overseas Properties)</h3>
+                        <h5>Zabadani Real Estate</h5>
+                        <p class="timeline-date">January 2013 - May 2013 | Dubai, UAE</p>
+                        <ul>
+                            <li>Closed deals including 2BHK apartment in Princess Tower (1.9M AED)</li>
+                            <li>Sold Mumbai properties worth 3 crores to NRI customers</li>
+                            <li>Developed relationships with developers in India and Dubai for property listings</li>
+                            <li>Executed successful SMS campaigns and email marketing strategies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content glass">
+                        <div class="timeline-dot"></div>
+                        <h3>Sales Promoter</h3>
+                        <h5>Swiss Arabian Perfumes LLC</h5>
+                        <p class="timeline-date">July 2005 - October 2007 | Sharjah, UAE</p>
+                        <ul>
+                            <li>Delivered persuasive sales presentations to corporate clients</li>
+                            <li>Expanded customer base through innovative sales techniques</li>
+                            <li>Managed product promotions and marketing initiatives</li>
+                            <li>Handled credit control and stock management responsibilities</li>
+                            <li>Built strong customer network that significantly improved sales</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Core Competencies</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-card glass p-4 text-center h-100">
+                        <i class="fas fa-globe skill-icon"></i>
+                        <h4>International Markets</h4>
+                        <p>Extensive experience in Dubai, UAE, and multiple African markets including Kenya, Uganda, Tanzania, Rwanda, Nigeria, Ghana, and South Africa.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-card glass p-4 text-center h-100">
+                        <i class="fas fa-chart-pie skill-icon"></i>
+                        <h4>Sales Strategy</h4>
+                        <p>Proven ability to develop and execute successful sales strategies that consistently meet and exceed targets in competitive markets.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-card glass p-4 text-center h-100">
+                        <i class="fas fa-users skill-icon"></i>
+                        <h4>Team Leadership</h4>
+                        <p>Experienced in building, training, and motivating high-performing sales teams across multiple international locations.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-card glass p-4 text-center h-100">
+                        <i class="fas fa-handshake skill-icon"></i>
+                        <h4>Negotiation</h4>
+                        <p>Exceptional negotiation skills honed through complex, high-value real estate transactions with discerning clients.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-card glass p-4 text-center h-100">
+                        <i class="fas fa-network-wired skill-icon"></i>
+                        <h4>Business Development</h4>
+                        <p>Track record of identifying and capitalizing on new business opportunities in emerging and established markets.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-card glass p-4 text-center h-100">
+                        <i class="fas fa-crown skill-icon"></i>
+                        <h4>Luxury Client Management</h4>
+                        <p>Specialized expertise in serving high-net-worth individuals with discretion, professionalism, and deep market knowledge.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6">
+                    <div class="glass p-4 h-100">
+                        <h4 class="mb-4">Professional Highlights</h4>
+                        <ul>
+                            <li class="mb-3">Generated 4 million AED in individual revenue for Sternon Tower project (2011)</li>
+                            <li class="mb-3">Consistently achieved annual revenue turnover of 27+ crores</li>
+                            <li class="mb-3">Established successful branch offices in Nairobi and South Africa</li>
+                            <li class="mb-3">Sold out all projects launched by Sternon Real Estate during tenure</li>
+                            <li>Developed extensive network across 9 countries in Africa and Middle East</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass p-4 h-100">
+                        <h4 class="mb-4">Key Achievements</h4>
+                        <ul>
+                            <li class="mb-3">Recognized as top performer with multiple sales awards</li>
+                            <li class="mb-3">Successfully transitioned from medical field to top-tier sales professional</li>
+                            <li class="mb-3">Built self-sustaining real estate brokerage business in Uganda</li>
+                            <li class="mb-3">Consistently ranked among top sales executives in every organization</li>
+                            <li>Maintained 90%+ client retention rate through exceptional service</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title text-center">Client Testimonials</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card h-100">
+                        <p class="testimonial-text">
+                            "Mayuri's dedication and market knowledge were instrumental in our successful property investments in Dubai. Her attention to detail and follow-up are exceptional."
+                        </p>
+                        <div>
+                            <p class="testimonial-author">Mr. Ashwin Kotadia</p>
+                            <p class="testimonial-position">Owner, Europa Pharma - Kenya</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card h-100">
+                        <p class="testimonial-text">
+                            "Working with Mayuri on our real estate portfolio expansion in East Africa was a pleasure. Her understanding of both local and international markets is impressive."
+                        </p>
+                        <div>
+                            <p class="testimonial-author">Mr. Haroon Motara</p>
+                            <p class="testimonial-position">CEO, Ugandare Reinsurance Co. Ltd - Uganda</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card h-100">
+                        <p class="testimonial-text">
+                            "Mayuri consistently delivers results. Her ability to understand client needs and match them with perfect properties is why we've worked with her for years."
+                        </p>
+                        <div>
+                            <p class="testimonial-author">Miss Treesa Mondal</p>
+                            <p class="testimonial-position">Senior Sales & Marketing Manager, Vingcard/ASSA ABLOY - Dubai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="glass p-4 h-100">
+                        <h4 class="mb-4">Contact Information</h4>
+                        <div class="contact-info">
+                            <p><i class="fas fa-envelope contact-icon"></i> mayuri08@yahoo.co.in</p>
+                            <p><i class="fas fa-envelope contact-icon"></i> mayuri.ghagada@gmail.com</p>
+                        </div>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone contact-icon"></i> +971 50 967 8614</p>
+                        </div>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt contact-icon"></i> Dubai, UAE</p>
+                            <p class="small">Available for international assignments</p>
+                        </div>
+                        
+                        <h4 class="mt-5 mb-4">Professional Profiles</h4>
+                        <div class="social-links">
+                            <a href="https://linkedin.com/in/mayuri-ghagada" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://wa.me/971509678614" target="_blank" class="social-link">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://facebook.com/mayuri.ghagada" target="_blank" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="skype:mayuri.ghagada?chat" class="social-link">
+                                <i class="fab fa-skype"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="glass p-4">
+                        <h4 class="mb-4">Send Me a Message</h4>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" placeholder="Your Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" placeholder="Your Email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary-custom">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
